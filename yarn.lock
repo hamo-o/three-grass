@@ -1696,7 +1696,7 @@
     "utility-types" "^3.10.0"
     "zustand" "^3.5.13"
 
-"@react-three/fiber@>=6.0", "@react-three/fiber@7.0.26":
+"@react-three/fiber@^7.0.26", "@react-three/fiber@>=6.0":
   "integrity" "sha512-46NBais4fQIGcMGLBbOf84lp8y/cg73jOEVmAQQJqWX6iOVeNg29jYd15LBuCW2qPD1qDRU0rOfLbMDgwr/vxQ=="
   "resolved" "https://registry.npmjs.org/@react-three/fiber/-/fiber-7.0.26.tgz"
   "version" "7.0.26"
@@ -8772,7 +8772,7 @@
   "resolved" "https://registry.npmjs.org/three/-/three-0.128.0.tgz"
   "version" "0.128.0"
 
-"three@>= 0.123.0", "three@>=0.103.0", "three@>=0.122.0", "three@>=0.126", "three@>=0.133", "three@>=0.137", "three@0.139.0":
+"three@^0.139.0", "three@>= 0.123.0", "three@>=0.103.0", "three@>=0.122.0", "three@>=0.126", "three@>=0.133", "three@>=0.137":
   "integrity" "sha512-hZ4LkCjgoEM82WLaOVptDKGpB3SkEyuJP2OHe36AFO8hS2I6CrEiNanXj7wwR3wIPT7V5wi5Y5pFnncS5SVHgQ=="
   "resolved" "https://registry.npmjs.org/three/-/three-0.139.0.tgz"
   "version" "0.139.0"
