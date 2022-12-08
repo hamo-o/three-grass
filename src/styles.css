@@ -27,3 +27,16 @@ canvas {
   touch-action: none;
   animation: fade-in 1s ease 0.3s forwards;
 }
+
+.title {
+  position: absolute;
+  top: 5rem;
+  width: 100%;
+  text-align: center;
+  z-index: 100;
+  display: block;
+
+  font-family: 'Zen Dots', cursive;
+  font-size: 2rem;
+  color: white;
+}

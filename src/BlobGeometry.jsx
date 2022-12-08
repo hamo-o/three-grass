@@ -1,11 +1,13 @@
 import * as THREE from 'three'
-import React, { useEffect, useRef, forwardRef } from 'react'
+import React, { useEffect, useRef, forwardRef, useState } from 'react'
 import { ComputedAttribute } from '@react-three/drei'
+import { useThree, useFrame } from 'react-three-fiber'
 import Perlin from 'perlin.js'
 
 Perlin.seed(Math.random())
 
 import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader'
+import { set } from 'lodash-es'
 
 const computeFlowerDensity = (geometry) => {
   const position = geometry.getAttribute('position')
@@ -22,9 +24,7 @@ const computeFlowerDensity = (geometry) => {
   return new THREE.Float32BufferAttribute(density, 1)
 }
 
-export const BlobGeometry = forwardRef((props, ref) => {
-  const geom = useRef()
-
+const svgMesh = () => {
   const fillMaterial = new THREE.MeshBasicMaterial({ color: '#F3FBFB' })
   const stokeMaterial = new THREE.LineBasicMaterial({
     color: '#00A5E6'
@@ -54,13 +54,48 @@ export const BlobGeometry = forwardRef((props, ref) => {
       })
     })
   })
+  return svgGroup
+}
 
-  useEffect(() => {}, [])
+const myMesh = () => {
+  const positions = new Float32Array([1, 0, 0, 0, 1, 0, -1, 0, 0, 0, -1, 0])
+
+  const normals = new Float32Array([0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1])
+
+  const colors = new Float32Array([0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1])
+
+  const indices = new Uint16Array([0, 1, 3, 2, 3, 1])
+  return (
+    // <mesh>
+    //   <bufferGeometry>
+    //     <bufferAttribute attach="attributes-position" array={positions} count={positions.length / 3} itemSize={3} />
+    //     <bufferAttribute attach="attributes-color" array={colors} count={colors.length / 3} itemSize={3} />
+    //     <bufferAttribute attach="attributes-normal" array={normals} count={normals.length / 3} itemSize={3} />
+    //     <bufferAttribute attach="index" array={indices} count={indices.length} itemSize={1} />
+    //   </bufferGeometry>
+    //   <meshStandardMaterial vertexColors side={DoubleSide} />
+    // </mesh>
+    <bufferGeometry>
+      <bufferAttribute attach="attributes-position" array={positions} count={positions.length / 3} itemSize={3} />
+      <bufferAttribute attach="attributes-color" array={colors} count={colors.length / 3} itemSize={3} />
+      <bufferAttribute attach="attributes-normal" array={normals} count={normals.length / 3} itemSize={3} />
+      <bufferAttribute attach="index" array={indices} count={indices.length} itemSize={1} />
+    </bufferGeometry>
+  )
+}
+
+export const BlobGeometry = forwardRef((props, ref) => {
+  const geom = useRef()
 
   return (
-    <mesh ref={ref}>
-      <boxGeometry ref={geom}></boxGeometry>
-      <meshBasicMaterial color="#221600" />
+    // <primitive object={myMesh} position={[10, 0, 0]} />
+    // <mesh ref={ref}>
+    //   <torusKnotGeometry ref={geom}></torusKnotGeometry>
+    //   <meshBasicMaterial color="#221600" />
+    // </mesh>
+    <mesh ref={ref} onClick={() => {}}>
+      <torusKnotGeometry ref={geom}></torusKnotGeometry>
+      <meshBasicMaterial color="#0b2b00" />
     </mesh>
   )
 })

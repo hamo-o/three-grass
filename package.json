@@ -6,17 +6,25 @@
   "main": "src/index.js",
   "dependencies": {
     "@react-three/drei": "8.19.4",
-    "@react-three/fiber": "^7.0.26",
+    "@react-three/fiber": "^7.0.29",
     "gl-noise": "1.6.1",
     "lamina": "1.1.8",
+    "lodash-es": "^4.17.21",
+    "lodash.flatten": "^4.4.0",
     "path-browserify": "^1.0.1",
     "perlin.js": "1.0.0",
     "react": "17.0.2",
+    "react-animated-cursor": "^2.5.2",
     "react-dom": "17.0.2",
+    "react-inlinesvg": "^3.0.1",
+    "react-router-dom": "^6.4.5",
     "react-scripts": "5.0.0",
+    "react-three-fiber": "^6.0.13",
+    "styled-component": "^2.8.0",
     "three": "^0.139.0",
     "three-custom-shader-material": "3.2.11",
-    "three-noise": "1.1.2"
+    "three-noise": "1.1.2",
+    "three-svg-loader": "^0.3.1"
   },
   "scripts": {
     "start": "react-scripts start",
