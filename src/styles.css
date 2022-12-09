@@ -30,7 +30,7 @@ canvas {
 
 .title {
   position: absolute;
-  top: 5rem;
+  top: 8rem;
   width: 100%;
   text-align: center;
   z-index: 100;
@@ -39,4 +39,38 @@ canvas {
   font-family: 'Zen Dots', cursive;
   font-size: 2rem;
   color: white;
+}
+
+.subtitle {
+  position: absolute;
+  top: 10rem;
+  width: 100%;
+  text-align: center;
+  z-index: 100;
+  display: block;
+
+  font-family: 'Zen Dots', cursive;
+  font-size: 2rem;
+  color: pink;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+}
+
+.text {
+  width: 70vw;
+  height: 100%;
+
+  position: absolute;
+  top: 16rem;
+
+  line-height: 2.5rem;
+
+  z-index: 100;
+  display: block;
+  word-break: break-all;
+
+  color: gray;
 }

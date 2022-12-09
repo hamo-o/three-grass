@@ -2,6 +2,7 @@ import * as THREE from 'three'
 import React, { useEffect, useRef, forwardRef, useState } from 'react'
 import { ComputedAttribute } from '@react-three/drei'
 import { useThree, useFrame } from 'react-three-fiber'
+import { useNavigate } from 'react-router-dom'
 import Perlin from 'perlin.js'
 
 Perlin.seed(Math.random())
@@ -86,6 +87,7 @@ const myMesh = () => {
 
 export const BlobGeometry = forwardRef((props, ref) => {
   const geom = useRef()
+  const navigate = useNavigate()
 
   return (
     // <primitive object={myMesh} position={[10, 0, 0]} />
@@ -93,7 +95,11 @@ export const BlobGeometry = forwardRef((props, ref) => {
     //   <torusKnotGeometry ref={geom}></torusKnotGeometry>
     //   <meshBasicMaterial color="#221600" />
     // </mesh>
-    <mesh ref={ref} onClick={() => {}}>
+    <mesh
+      ref={ref}
+      onClick={() => {
+        navigate('/detail', { replace: true })
+      }}>
       <torusKnotGeometry ref={geom}></torusKnotGeometry>
       <meshBasicMaterial color="#0b2b00" />
     </mesh>
