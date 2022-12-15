@@ -8,6 +8,7 @@
     "@react-three/drei": "8.19.4",
     "@react-three/fiber": "^7.0.29",
     "gl-noise": "1.6.1",
+    "gltf-pipeline": "^3.0.5",
     "lamina": "1.1.8",
     "lodash-es": "^4.17.21",
     "lodash.flatten": "^4.4.0",
