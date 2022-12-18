@@ -1,2 +1,3 @@
-# landings
-Created with CodeSandbox
+# 뉴미디어디자인
+
+뉴미디어디자인 프로젝트 - DMZ MAP
