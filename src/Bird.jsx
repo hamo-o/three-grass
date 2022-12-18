@@ -4,24 +4,10 @@ import { Canvas } from '@react-three/fiber'
 import { useNavigate } from 'react-router-dom'
 import { Environment, OrbitControls, Sky, Cloud, CameraShake, Shadow } from '@react-three/drei'
 import { Particles } from './Particles'
-import { Grass } from './Grass'
-import AnimatedCursor from 'react-animated-cursor'
-import { useLoader } from 'react-three-fiber'
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
 
-const Model = () => {
-  const obj = useLoader(OBJLoader, '/public/models/cat.obj')
-  console.log(obj)
-  return (
-    <>
-      {obj && (
-        <mesh>
-          <primitive object={obj} scale={10} />
-        </mesh>
-      )}
-    </>
-  )
-}
+import AnimatedCursor from 'react-animated-cursor'
+
+import BirdModel from './Bird_model'
 
 const Bird = () => {
   const navigate = useNavigate()
@@ -65,23 +51,23 @@ const Bird = () => {
           있습니다. 과연 사람이 이용하기 좋은 강을 만드는 것과 생명들이 더불어 사는 강을 만드는 것 이 둘 중 에서 무엇이 더 중요한 것일까요?
         </div>
       </div>
-      <Canvas dpr={1.5} camera={{ position: [0, 0, 0], far: 50, rotateZ: -20 }}>
+      <Canvas dpr={1.5} camera={{ position: [0, 0, 1], far: 10000 }}>
         <Suspense fallback={null}>
           {/* <mesh>
             <sphereGeometry args={[0.2, 64, 64]}></sphereGeometry>
             <meshBasicMaterial color="#0b2b00" />
           </mesh> */}
-          <mesh>
+          <mesh scale={100}>
             <torusKnotGeometry></torusKnotGeometry>
             <meshBasicMaterial color="white" />
           </mesh>
-          <Model />
-          <Clouds />
+
           <Environment preset="sunset" />
           <Particles amount={333} size={0.01} opacity={0.6} />
           <CameraShake maxRoll={0.2} maxPitch={0.2} maxYaw={0.2} />
           <Sky />
-          {/* <OrbitControls makeDefault autoRotate autoRotateSpeed={1.5} minDistance={2} maxDistance={30} /> */}
+          <BirdModel />
+          <OrbitControls makeDefault autoRotate autoRotateSpeed={1.5} minDistance={20} maxDistance={30} />
         </Suspense>
       </Canvas>
     </>

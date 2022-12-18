@@ -90,11 +90,6 @@ export const BlobGeometry = forwardRef((props, ref) => {
   const navigate = useNavigate()
 
   return (
-    // <primitive object={myMesh} position={[10, 0, 0]} />
-    // <mesh ref={ref}>
-    //   <torusKnotGeometry ref={geom}></torusKnotGeometry>
-    //   <meshBasicMaterial color="#221600" />
-    // </mesh>
     <mesh
       ref={ref}
       onClick={() => {

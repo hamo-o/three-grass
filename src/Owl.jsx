@@ -4,29 +4,14 @@ import { useNavigate } from 'react-router-dom'
 import { Environment, OrbitControls, Sky, Cloud, CameraShake, Shadow } from '@react-three/drei'
 import { Particles } from './Particles'
 import AnimatedCursor from 'react-animated-cursor'
-import { useLoader } from 'react-three-fiber'
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
 
-const Model = () => {
-  const obj = useLoader(OBJLoader, '/public/models/cat.obj')
-  console.log(obj)
-  return (
-    <>
-      {obj && (
-        <mesh>
-          <primitive object={obj} scale={10} />
-        </mesh>
-      )}
-    </>
-  )
-}
+import { OwlModel } from './OwlModel'
 
 const Owl = () => {
   const navigate = useNavigate()
   const myClick = () => {
     navigate('/', { replace: true })
   }
-  //   const obj = useLoader(OBJLoader, '/public/models/cat.obj')
 
   return (
     <>
@@ -68,17 +53,17 @@ const Owl = () => {
             <sphereGeometry args={[0.2, 64, 64]}></sphereGeometry>
             <meshBasicMaterial color="#0b2b00" />
           </mesh> */}
-          <mesh>
+          <mesh scale={100}>
             <torusKnotGeometry></torusKnotGeometry>
             <meshBasicMaterial color="white" />
           </mesh>
-          <Model />
+          <OwlModel />
           <Clouds />
           <Environment preset="sunset" />
           <Particles amount={333} size={0.01} opacity={0.6} />
           <CameraShake maxRoll={0.2} maxPitch={0.2} maxYaw={0.2} />
           <Sky />
-          {/* <OrbitControls makeDefault autoRotate autoRotateSpeed={1.5} minDistance={2} maxDistance={30} /> */}
+          <OrbitControls makeDefault autoRotate autoRotateSpeed={1.5} minDistance={15} maxDistance={30} />
         </Suspense>
       </Canvas>
     </>

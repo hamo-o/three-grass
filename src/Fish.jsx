@@ -5,29 +5,14 @@ import { Environment, OrbitControls, Sky, Cloud, CameraShake, Shadow } from '@re
 import { Particles } from './Particles'
 import { Grass } from './Grass'
 import AnimatedCursor from 'react-animated-cursor'
-import { useLoader } from 'react-three-fiber'
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
 
-const Model = () => {
-  const obj = useLoader(OBJLoader, '/public/models/cat.obj')
-  console.log(obj)
-  return (
-    <>
-      {obj && (
-        <mesh>
-          <primitive object={obj} scale={10} />
-        </mesh>
-      )}
-    </>
-  )
-}
+import FishModel from './FishModel'
 
 const Fish = () => {
   const navigate = useNavigate()
   const myClick = () => {
     navigate('/', { replace: true })
   }
-  //   const obj = useLoader(OBJLoader, '/public/models/cat.obj')
 
   return (
     <>
@@ -61,23 +46,23 @@ const Fish = () => {
           영향도 매우 크지요. 강에서 이 신비 로운 황금물고기를 계속 만나기 위해서는 앞으로 세심한 주의와 적극 적인 보호가 필요합니다.
         </div>
       </div>
-      <Canvas dpr={1.5} camera={{ position: [0, 1, 0], far: 50, rotateZ: -20 }}>
+      <Canvas dpr={1.5} camera={{ position: [0, -0.1, 8], far: 50 }}>
         <Suspense fallback={null}>
           {/* <mesh>
             <sphereGeometry args={[0.2, 64, 64]}></sphereGeometry>
             <meshBasicMaterial color="#0b2b00" />
           </mesh> */}
-          <mesh>
+          <mesh scale={200}>
             <torusKnotGeometry></torusKnotGeometry>
             <meshBasicMaterial color="white" />
           </mesh>
-          <Model />
+          <FishModel />
           <Clouds />
           <Environment preset="sunset" />
           <Particles amount={333} size={0.01} opacity={0.6} />
           <CameraShake maxRoll={0.2} maxPitch={0.2} maxYaw={0.2} />
           <Sky />
-          {/* <OrbitControls makeDefault autoRotate autoRotateSpeed={1.5} minDistance={2} maxDistance={30} /> */}
+          {/* <OrbitControls makeDefault autoRotate autoRotateSpeed={1.5} minDistance={4} maxDistance={10} /> */}
         </Suspense>
       </Canvas>
     </>

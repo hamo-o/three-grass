@@ -11,6 +11,7 @@ import Owl from './Owl'
 import Fish from './Fish'
 import Goose from './Goose'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import MapAll from './MapAll'
 
 render(
   <BrowserRouter>

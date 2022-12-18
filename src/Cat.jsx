@@ -3,6 +3,7 @@ import { Canvas } from '@react-three/fiber'
 import { useNavigate } from 'react-router-dom'
 import { Environment, OrbitControls, Sky, Cloud, CameraShake, Sparkles } from '@react-three/drei'
 import { Particles } from './Particles'
+import { Grass } from './Grass'
 import AnimatedCursor from 'react-animated-cursor'
 
 import CatModel from './cat_model'
@@ -29,19 +30,23 @@ const Cat = () => {
       <div className="subtitle" onClick={myClick}>
         Leopard Cat
       </div>
-      <Canvas dpr={1.5} camera={{ position: [0, -0.3, 2], far: 100 }}>
+      <Canvas dpr={1.5} camera={{ position: [0, -0.3, 2], far: 1000 }}>
         <Suspense fallback={null}>
+          <mesh scale={30} position={[0, 0, 0]}>
+            <torusKnotGeometry></torusKnotGeometry>
+            <meshBasicMaterial color="white" />
+          </mesh>
           <CatModel />
           <Clouds />
           <Environment preset="sunset" />
           <Particles amount={333} size={0.01} opacity={0.6} />
           <CameraShake maxRoll={0.2} maxPitch={0.2} maxYaw={0.2} />
-          <Sky azimuth={100} />
-          <OrbitControls makeDefault autoRotate autoRotateSpeed={1.5} minDistance={2} maxDistance={5} />
+          <Sky azimuth={300} />
+          <OrbitControls makeDefault autoRotate autoRotateSpeed={1.5} minDistance={1} maxDistance={4} />
         </Suspense>
       </Canvas>
       <div className="content">
-        <div className="text white">
+        <div className="text">
           지금 우리나라에서 상위 포식자라고 할 수 있는 동물은 삵입니다. 강력한 라이벌로 담비가 있지만 담비는 잡식성이기 때문에 육식동물인 삵을 상위 포식자로
           여기고 있습니다. 그런데 사실 삵이 상위 포식자라는 것은 참 슬픈 일입니다. ‘호랑이 없는 굴에 여우가 왕이다‘라는 속담처럼 우리나라에서 호랑이, 늑대,
           여우, 표범 등의 맹수들이 대부분 멸종했기 때문에 간신히 살아남은 삵이 그 자리를 차지하고 있는 것이기 때문입니다. 그리고 비록 상위 포식자라 하더라도
